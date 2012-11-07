@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Dart Quick Search"
+    description="Performs a full-text search on the repository"
+    author="nelsonsilva" author_email="nelson.silva@inevo.pt">
+    <Require feature="setprefs"/>
+    <Require feature="dynamic-height" />
+    <#include "default-oauth-prefs.ftl"/>
+  </ModulePrefs>
+  <UserPref name="documentLinkBuilder" datatype="hidden" default_value="" />
+  <#include "context-prefs.ftl"/>
+  <UserPref name="savedQuery" display_name="Saved query" datatype="string"></UserPref>
+  <UserPref name="queryType" display_name="Query type"
+          default_value="TEXT"  datatype="enum" required="true">
+       <EnumValue value="TEXT" display_value="Full text" />
+       <EnumValue value="NXQL" display_value="NXQL" />
+  </UserPref>
+  <UserPref name="displayMode" display_name="Display mode"
+          default_value="STD"  datatype="enum" required="true">
+       <EnumValue value="STD" display_value="Standard" />
+       <EnumValue value="COMPACT" display_value="Compact" />
+  </UserPref>
+  <Content type="html">
+
+<![CDATA[
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="${clientSideBaseUrl}nxthemes-lib/gadget-common.css,gadget-documentlists.css,gadget-quicksearch.css?path=${contextPath}&basepath=${contextPath}"/>
+
+    <!-- insert JS Context -->
+    ${jsContext}
+    <script src="${clientSideBaseUrl}nxthemes-lib/jquery.js,gadget-default-automation-request.js,gadget-default-documentlist-display.js"></script>
+	<script type="application/dart" src="${clientSideBaseUrl}/scripts/opensocial/gadgets/dart-quicksearch/web/quicksearch.dart"></script>
+    <script src="https://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
+  </head>
+  <body>
+
+   <div class="tools">
+     <div id="searchBox" style="display:none">
+     <table>
+      <tr>
+       <td><input type="text" name="searchPattern" id ="searchPattern"></td>
+       <td><input type="button" value="Search" id="doSearch"/></td>
+       <td><input type="button" value="Save" id="doSaveSearch"/></td>
+      </tr>
+     </table>
+     </div>
+     <div id="titleBox" style="display:none">
+     <table>
+      <tr>
+       <td>Search Results for <span id="queryText"> </span></td>
+       <td><input type="button" value="Edit" id="doEditSearch"/></td>
+      </tr>
+     </table>
+     </div>
+   </div>
+
+   <div id="content">
+     <#include "default-documentlist-layout.ftl"/>
+     <#include "default-request-controls.ftl"/>
+   </div>
+
+  </body>
+</html>
+]]>
+  </Content>
+</Module>

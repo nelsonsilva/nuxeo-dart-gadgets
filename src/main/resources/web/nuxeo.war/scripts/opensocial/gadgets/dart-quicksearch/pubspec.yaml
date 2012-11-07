@@ -1,0 +1,5 @@
+name:  quicksearch
+description:  A Nuxeo gadget in Dart
+author: Nelson Silva <nelson.silva@inevo.pt>
+dependencies:
+  js: 0.0.9

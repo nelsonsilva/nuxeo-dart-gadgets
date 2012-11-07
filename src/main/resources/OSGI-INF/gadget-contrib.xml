@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.opensocial.dart.gadgets" version="1.0">
+
+  <extension target="org.nuxeo.opensocial.gadgets.service" point="gadget">
+
+    <!-- Nuxeo -->
+    <internalGadget name="dart-quicksearch" disabled="false">
+      <mountPoint>/dart-quicksearch</mountPoint>
+      <entryPoint>dart-quicksearch.xml</entryPoint>
+      <category>Nuxeo</category>
+      <icon>gadget-quicksearch.png</icon>
+    </internalGadget>
+  </extension>
+</component>
+    
